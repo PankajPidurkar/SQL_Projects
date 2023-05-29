@@ -1,145 +1,134 @@
-#ADIDAS SALES ANALYSIS USING SQL
+--ADIDAS SALES ANALYSIS USING SQL
 
 
 
-create database pankaj;
-#import CSV File in MySQL server in Pankaj Data Base 
+-- Create database pankaj;
+CREATE DATABASE pankaj;
 
-use pankaj;
-#Alter the name of Column 
-alter table data_addidas  rename column ï»¿Retailer to Retailer;
+-- Import CSV File in MySQL server in Pankaj Database
 
-# All the  Data retrive from Database 
-Select * from data_addidas;
+USE pankaj;
 
-# Analyze Total_Sales by region 
-select region, sum(total_sales) 
-as Total_Sales from data_addidas 
-group by Region;
+-- Alter the name of the column
+ALTER TABLE data_addidas RENAME COLUMN ï»¿Retailer TO Retailer;
 
-#Identify the Top Selling Products
-select product, sum(units_sold) as Total_Units_Sold
-from data_addidas
-group by product
-order by Total_Units_sold desc;
+-- Retrieve all the data from the database
+SELECT * FROM data_addidas;
 
+-- Analyze Total_Sales by region
+SELECT region, SUM(total_sales) AS Total_Sales 
+FROM data_addidas 
+GROUP BY region;
 
-#Average Price per unit for each Product
-select product, avg(price_Per_unit) as Average_Price
-from data_addidas
-group by product;
+-- Identify the Top Selling Products
+SELECT product, SUM(units_sold) AS Total_Units_Sold 
+FROM data_addidas 
+GROUP BY product
+ORDER BY Total_Units_Sold DESC;
 
-#calculating Sales By Sales Methods 
-select sales_method, Sum(Total_Sales) as TotalSales_Methods 
-from Data_Addidas
-group  by Sales_Method;
+-- Average Price per unit for each Product
+SELECT product, AVG(price_Per_unit) AS Average_Price 
+FROM data_addidas 
+GROUP BY product;
 
-#Calculating  Total_sales and Operating Profit form Each Retailer
-select retailer, sum(Operating_Profit)
-as Total_Operating_Profit from Data_addidas
-group by Retailer;
+-- Calculating Sales By Sales Methods
+SELECT sales_method, SUM(Total_Sales) AS TotalSales_Methods 
+FROM data_addidas 
+GROUP BY sales_method;
 
+-- Calculating Total_sales and Operating Profit form Each Retailer
+SELECT retailer, SUM(Operating_Profit) AS Total_Operating_Profit 
+FROM data_addidas 
+GROUP BY retailer;
 
-#Higest Selling Price of Product 
-select product, sum(units_Sold)  Total_Unit_Sold
-from data_addidas
-group by Product 
-order by Total_Unit_sold desc;
+-- Highest Selling Price of Product
+SELECT product, SUM(units_Sold) AS Total_Unit_Sold 
+FROM data_addidas 
+GROUP BY product 
+ORDER BY Total_Unit_Sold DESC;
 
+-- Lowest Selling Price of Product
+SELECT product, SUM(Units_Sold) AS Total_Unit_Sold 
+FROM data_addidas 
+GROUP BY product 
+ORDER BY Total_Unit_Sold ASC;
 
-#Lowest Selling Price of Product
-select product, sum(Units_Sold) as Total_Unit_Sold
-from data_addidas
-group by product
-order by Total_Unit_Sold asc;
+-- Calculate Average Operating Margin by Region
+SELECT region, SUM(Operating_Margin) AS Average_Operating_Margin 
+FROM data_addidas 
+GROUP BY region 
+ORDER BY Average_Operating_Margin DESC;
 
+-- Calculating Total sales and Operating Profit for Each State and City
+SELECT state, city, SUM(operating_Profit) AS Operating_Profit, SUM(total_sales) AS Total_Sales 
+FROM data_addidas 
+GROUP BY state, city;
 
-#Calculate Average Operating Margin by Region
-select region, sum(Operating_Margin) as Average_Operating_Margin
-from data_addidas 
-group by region
-order by Average_Operating_Margin desc;
+-- Calculating Total_sales and Operating Profit
+SELECT Retailer, Product, SUM(total_sales) AS Total_Sales, SUM(Operating_Profit) AS Operating_Profit 
+FROM data_addidas 
+GROUP BY Retailer, Product;
 
-#Calculating Total sales and Operating Profit for Each State and City 
-select State, City,  sum(operating_Profit) as Operating_Profit, sum(total_sales) as Total_Sales
-from data_addidas
-group by state, city; 
+-- Calculating Top Performing Region based on Operating_Margin
+SELECT region, SUM(Operating_Margin) AS Top_Performance_Margin FROM data_addidas 
+GROUP BY region 
+ORDER BY Top_Performance_Margin DESC;
 
-#calculating Total_sales and Operating Profit
-select Retailer, Product, sum(total_sales) as Total_Sales, sum(Operating_Profit) as Operating_Profit
-from data_addidas
-group by Retailer, Product;
+-- To Calculate Total_sales in Region, Salesmethod, Product
+SELECT region, Sales_method, Product, SUM(total_sales) AS Total_Sales 
+FROM data_addidas 
+GROUP BY region, Sales_method, Product;
 
-#calculating Top Performing Region based on Operating_Margin 
-select region, sum(Operating_Margin) as Top_Performance_Margin
-from data_addidas
-group by region
-order by top_Performance_Margin desc;
+-- To calculate Total_sales and Operating_Profit for Specific Retailer and Product
+SELECT Retailer, Product, SUM(Total_Sales) AS Total_Sales, SUM(Operating_Profit) AS Operating_Profit 
+FROM data_addidas 
+WHERE Retailer = "Foot Locker" AND Product = "Women's Apparel"
+GROUP BY Retailer, Product;
 
+-- To Calculate total_Sales and Operating_Profit for Sales_Methods
+SELECT sales_Method, SUM(total_sales) AS Total_Sales, SUM(operating_Profit) AS Total_Operating_Profit
+FROM data_addidas 
+GROUP BY sales_method;
 
-#To Calculate Total_sales in Region, Salesmethod, Product
-select region, Sales_method, Product, sum(total_sales) 
-as Total_Sales from data_addidas
-group by region, Sales_Method, Product;
+-- To Calculate Top-Performing City in Total Sales
+SELECT city, SUM(total_Sales) AS Total_Sales 
+FROM data_addidas 
+GROUP BY city 
+ORDER BY Total_Sales DESC;
 
+-- To Calculate the Distribution of Sales Across Different Regions, States, and Cities
+SELECT region, state, city, SUM(total_Sales) AS Total_Sales 
+FROM data_addidas 
+GROUP BY region, state, city;
 
-#To calculate Total_sales and Operating_Profit for Specific Retailer and Product
-select Retailer, Product, Sum(Total_Sales) as Total_Sales, Sum(Operating_Profit) as Operating_Profit
-from data_addidas
-where Retailer = "Foot Locker" and Product = "WoMen's Apparel"
-group by retailer, Product;
+-- To Calculate the Average price per unit for Each product within a specific region
+SELECT region, product, AVG(price_per_unit) AS Average_Price_Per_unit 
+FROM data_addidas 
+GROUP BY Region, product;
 
-#To Calculate  total_Sales and Operating_Profit for Sales_Methods 
-select sales_Method, sum(total_sales) as Total_Sales, sum(operating_Profit) as Total_Operating_Profit
-from data_addidas 
-Group by Sales_method;
+-- To Calculate Top-Selling Products in terms of total Sales within Specific Region
+SELECT region, product, SUM(total_sales) AS Total_Sales 
+FROM data_addidas 
+GROUP BY Region, product 
+ORDER BY Total_Sales DESC;
 
+-- To Calculate Total_Sales and Operating_Profit for Each Retailer within Specific Region
+SELECT region, retailer, SUM(total_sales) AS Total_sales, SUM(Operating_profit) AS Total_Operating_Profit 
+FROM data_addidas 
+GROUP BY region, retailer;
 
-#to Calculate Top-Performming City in Total Sales
-select city, sum(total_Sales) as Total_Sales from data_addidas
-group by city
-order by Total_Sales desc;
+-- To Calculate highest and Lowest retailer based on Total_Sales
+SELECT retailer, SUM(total_Sales) AS Total_Sales 
+FROM data_addidas
+GROUP BY Retailer 
+ORDER BY Total_Sales;
 
-#To Calculate the analyze the Distribution of Sales Across Different Regiion, States and Cities 
-select region, state, city, sum(total_Sales) as Total_Sales
-from data_addidas
-group by region, State, City;
+-- To Calculate sales Distribution Across different States within a region
+SELECT region, State, SUM(total_Sales) AS Total_Sales
+FROM data_addidas 
+GROUP BY region, State;
 
-
-
-#To Calculate the Average price per unit for Each product within a specific region 
-select region, product, avg(price_per_unit) as Average_Price_Per_unit
-from data_addidas
-group by Region, product;
-
-
-#To Calculate Top-Selling Products in terms of totals Sales within Specific Region
-select region, product, sum(total_sales) as Total_Sales
-from data_addidas
-group by Region, product
-order by Total_Sales desc;
-
-
-#To Calculate Total_Sales and Operating_Profit for Each Retailer within Specific Region
-select region retailer, sum(total_sales) as Total_sales, sum(Operating_profit) as Total_Operating_Profit
-from data_addidas
-group by region, retailer;
- 
-
-
-#To Calculate higest and Lowest retailer based as Total_Sales
-select retailer, sum(total_Sales) as Total_Sales
-from data_addidas
-group by Retailer
-order by Total_Sales;
-
-
-
-#To Calculate sales Distribution Across different Satea within  region 
-select region, State, sum(total_Sales) as Total_Sales
-from data_addidas
-group by region, state;
-
+-- Additional query
 SELECT
   Region,
   Retailer_ID,
@@ -150,12 +139,13 @@ SELECT
   AVG(Price_Per_Unit) AS AveragePricePerUnit,
   AVG(Operating_Margin) AS AverageOperatingMargin
 FROM
-data_addidas
+  data_addidas
 GROUP BY
   Region,
   Product,
   Sales_Method,
   Retailer_ID;
+
 
 
 
