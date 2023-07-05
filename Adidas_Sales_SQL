@@ -150,6 +150,57 @@ GROUP BY
 
 
 
+ADIDAS Sales Analysis using SQL ✨
+
+In this project, I performed an analysis of ADIDAS sales data using SQL. I created a database named "pankaj" and imported a CSV file into the database. Then, I executed several SQL queries to retrieve and analyze the data. Here are some of the key insights from the analysis:
+
+🌍 Analyzed total sales by region:
+
+Retrieved the total sales for each region.
+🔝 Identified the top selling products:
+
+Determined the products with the highest total units sold.
+💰 Calculated the average price per unit for each product.
+
+📊 Calculated sales by sales methods:
+
+Analyzed total sales for each sales method.
+💼 Calculated total sales and operating profit for each retailer.
+
+📈 Determined the highest and lowest selling prices of products.
+
+💼 Calculated the average operating margin by region.
+
+💵 Calculated total sales and operating profit for each state and city.
+
+💼 Calculated total sales and operating profit for each retailer and product.
+
+🏆 Identified the top performing region based on operating margin.
+
+📊 Analyzed total sales by region, sales method, and product.
+
+💼 Calculated total sales and operating profit for a specific retailer and product.
+
+📊 Calculated total sales and operating profit for each sales method.
+
+🏙️ Identified the top-performing city in terms of total sales.
+
+🗺️ Analyzed the distribution of sales across different regions, states, and cities.
+
+💲 Calculated the average price per unit for each product within a specific region.
+
+🔝 Identified the top-selling products in terms of total sales within a specific region.
+
+💼 Calculated total sales and operating profit for each retailer within a specific region.
+
+🔝 Determined the highest and lowest retailers based on total sales.
+
+🗺️ Analyzed sales distribution across different states within a region.
+
+These analyses provide valuable information for understanding ADIDAS sales performance and can be utilized for making strategic business decisions. 💪💼💡
+
+
+
 
 
 
